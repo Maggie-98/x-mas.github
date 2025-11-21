@@ -4,55 +4,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>圣诞节礼物互换 - X-mas Gift Exchange</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e60000;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        select {
+            font-size: 18px;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        button {
+            background-color: #008CBA;
+            color: white;
+            padding: 15px 32px;
+            font-size: 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #005f73;
+        }
+        .note {
+            font-size: 14px;
+            margin-top: 30px;
+            color: #fff;
+        }
+        .footer {
+            margin-top: 50px;
+            font-size: 14px;
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>🎄 圣诞节礼物互换 - X-mas Gift Exchange 🎁</h1>
-            <p class="description">帮助你与朋友们一起交换圣诞礼物！</p>
-        </header>
+    <h1>🎄 圣诞节礼物互换 / X-Mas Gift Exchange 🎁</h1>
+    <p>请选选择你的名字 / Choose your name:</p>
 
-        <!-- 第一步：选择名字 / Step 1: Choose a Name -->
-        <div id="page1" class="page">
-            <h2>第一步：选择名字 / Step 1: Choose a Name</h2>
-            <p>请选择一个名字（避免选择自己）。</p>
-            <select id="nameSelection">
-                <option value="Maggie">Maggie</option>
-                <option value="Jane">Jane</option>
-                <option value="Yvonne">Yvonne</option>
-                <option value="Swee Peng">Swee Peng</option>
-                <option value="Amy">Amy</option>
-                <option value="Pei Pei">Pei Pei</option>
-                <option value="Mei Yi">Mei Yi</option>
-                <option value="Yi">Yi</option>
-                <option value="Mei">Mei</option>
-            </select>
-            <button class="next-btn" id="next1" onclick="nextPage(1)">下一步 / Next</button>
-        </div>
+    <select id="nameSelection">
+        <option value="Yvonne">Yvonne</option>
+        <option value="Maggie">Maggie</option>
+        <option value="Jane">Jane</option>
+        <option value="Amy">Amy</option>
+        <option value="Yi Mei">Yi Mei</option>
+        <option value="Pei Pei">Pei Pei</option>
+        <option value="Swee Peng">Swee Peng</option>
+        <option value="Mei Yi">Mei Yi</option>
+    </select>
 
-        <!-- 第二步：抽选牌 / Step 2: Draw a Card -->
-        <div id="page2" class="page">
-            <h2>第二步：抽选牌 / Step 2: Draw a Card</h2>
-            <p>点击下方按钮进行抽选。</p>
-            <button class="draw-btn" id="drawButton" onclick="drawCard()">抽选 / Draw</button>
-            <p id="drawResult"></p>
-            <button class="next-btn" id="next2" onclick="nextPage(2)" style="display: none;">下一步 / Next</button>
-        </div>
+    <br>
 
-        <!-- 第三步：总结 / Step 3: Summary -->
-        <div id="page3" class="page">
-            <h2>第三步：总结 / Step 3: Summary</h2>
-            <p id="summary"></p>
-            <p id="time"></p>
-            <p class="note">如果您重新进入链接，将直接跳转到此页面，无法重新抽选。</p>
-        </div>
+    <button onclick="startExchange()">开始抽签 / Start Exchange</button>
 
-        <footer>
-            <p>&copy; 2025 圣诞节礼物互换 - X-mas Gift Exchange</p>
-        </footer>
+    <div id="result" style="display:none; margin-top: 20px;">
+        <p id="exchangeResult"></p>
     </div>
 
-    <script src="script.js"></script>
+    <p class="note">请确保选择一个有效的名字！</p>
+
+    <div class="footer">
+        <p>&copy; 2025 圣诞节礼物互换 - X-mas Gift Exchange</p>
+    </div>
+
+    <script>
+        function startExchange() {
+            const selectedName = document.getElementById('nameSelection').value;
+            const participants = ["Yvonne", "Maggie", "Jane", "Amy", "Yi Mei", "Pei Pei", "Swee Peng"];
+            
+            // Remove selected name from participants to avoid self-selection
+            const remainingNames = participants.filter(name => name !== selectedName);
+
+            // Randomly select a name from the remaining options
+            const randomIndex = Math.floor(Math.random() * remainingNames.length);
+            const giftRecipient = remainingNames[randomIndex];
+
+            // Display the result
+            document.getElementById('exchangeResult').innerText = `您将为 ${giftRecipient} 准备礼物！`;
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
