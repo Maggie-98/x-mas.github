@@ -1,8 +1,11 @@
 const participants = ['Maggie', 'Jane', 'Yvonne'];
-let drawnParticipants = []; // 记录已抽选的名单
+let drawnParticipants = []; // 已抽选的人
 
 function nextPage(page) {
+    // 隐藏所有页面
     document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
+    
+    // 显示当前页面
     if (page === 1) {
         document.getElementById('page2').style.display = 'block';
     } else if (page === 2) {
@@ -19,7 +22,7 @@ function drawCard() {
         return;
     }
     
-    // 随机抽取
+    // 随机抽选
     const randomIndex = Math.floor(Math.random() * availableParticipants.length);
     const drawnName = availableParticipants[randomIndex];
     
