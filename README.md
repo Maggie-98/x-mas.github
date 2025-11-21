@@ -1,58 +1,74 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>圣诞节礼物互换 - X-mas Gift Exchange</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>🎄 圣诞节礼物互换 - X-mas Gift Exchange 🎁</h1>
-            <p class="description">帮助你与朋友们一起交换圣诞礼物！</p>
-        </header>
+# 圣诞节礼物互换 - X-Mas Gift Exchange 🎄🎁
 
-        <!-- 第一步：选择名字 / Step 1: Choose a Name -->
-        <div id="page1" class="page">
-            <h2>第一步：选择名字 / Step 1: Choose a Name</h2>
-            <p>请选择一个名字（避免选择自己）。</p>
-            <select id="nameSelection">
-                <option value="Maggie">Maggie</option>
-                <option value="Jane">Jane</option>
-                <option value="Yvonne">Yvonne</option>
-                <option value="Swee Peng">Swee Peng</option>
-                <option value="Amy">Amy</option>
-                <option value="Pei Pei">Pei Pei</option>
-                <option value="Mei Yi">Mei Yi</option>
-                <option value="Yi">Yi</option>
-                <option value="Mei">Mei</option>
-            </select>
-            <button class="next-btn" id="next1" onclick="nextPage(1)">下一步 / Next</button>
-        </div>
+这是一个简单的圣诞节礼物互换网页应用，旨在帮助用户与朋友们一起交换圣诞礼物。通过该应用，用户可以选择一个名字，并通过系统随机选择一个礼物交换对象。
 
-        <!-- 第二步：抽选牌 / Step 2: Draw a Card -->
-        <div id="page2" class="page">
-            <h2>第二步：抽选牌 / Step 2: Draw a Card</h2>
-            <p>点击下方按钮进行抽选。</p>
-            <button class="draw-btn" id="drawButton" onclick="drawCard()">抽选 / Draw</button>
-            <p id="drawResult"></p>
-            <button class="next-btn" id="next2" onclick="nextPage(2)" style="display: none;">下一步 / Next</button>
-        </div>
+## 功能概述
 
-        <!-- 第三步：总结 / Step 3: Summary -->
-        <div id="page3" class="page">
-            <h2>第三步：总结 / Step 3: Summary</h2>
-            <p id="summary"></p>
-            <p id="time"></p>
-            <p class="note">如果您重新进入链接，将直接跳转到此页面，无法重新抽选。</p>
-        </div>
+该应用包含以下几个主要功能：
 
-        <footer>
-            <p>&copy; 2025 圣诞节礼物互换 - X-mas Gift Exchange</p>
-        </footer>
-    </div>
+1. **选择名字**  
+   用户从预设的名字列表中选择一个名字进行礼物交换，确保选择的名字不是自己。
 
-    <script src="script.js"></script>
-</body>
-</html>
+2. **抽选礼物对象**  
+   用户点击“开始抽签”按钮，系统会随机从名单中抽取一个名字，决定该用户需要为谁准备礼物。
+
+3. **显示结果**  
+   抽选结果会显示在页面上，告知用户他们要为谁准备礼物。
+
+## 项目结构
+
+该项目由以下文件组成：
+
+- `index.html` - 页面内容结构，包含选择名字、抽选礼物、显示结果部分。
+- `style.css` - 页面样式文件，定义了页面的视觉效果和布局。
+- `script.js` - JavaScript 文件，控制页面的交互和逻辑。
+
+### `index.html`
+
+该文件定义了页面的结构，包括：
+- 一个标题（`🎄 圣诞节礼物互换 / X-Mas Gift Exchange 🎁`）
+- 一个下拉列表，供用户选择名字。
+- 一个按钮，用户点击后系统会随机抽选一个礼物交换对象。
+- 一个区域显示抽选的结果。
+
+### `style.css`
+
+该文件定义了页面的样式：
+- 页面背景设置为圣诞节的红色，并使用白色字体。
+- 按钮和文本的样式美化，提供了悬停效果。
+
+### `script.js`
+
+该文件包含了应用的逻辑：
+- 用户选择名字后，点击按钮，系统会随机抽取一个名字。
+- 随机抽取的结果会显示在页面上。
+
+## 安装与使用
+
+### 1. 本地使用
+
+1. 下载或克隆该项目的所有文件。
+2. 打开 `index.html` 文件，可以直接在浏览器中查看应用。
+3. 确保 `style.css` 和 `script.js` 文件与 `index.html` 在同一目录下。
+
+### 2. 部署到 Web 服务器
+
+1. 将整个项目文件夹上传到支持 HTML/CSS/JS 的 Web 服务器上。
+2. 通过访问 `index.html` 文件链接即可在浏览器中使用该应用。
+
+## 示例
+
+### 第一步：选择名字
+
+在页面加载时，用户会看到如下的名字选择下拉框：
+
+```html
+<select id="nameSelection">
+    <option value="Yvonne">Yvonne</option>
+    <option value="Maggie">Maggie</option>
+    <option value="Jane">Jane</option>
+    <option value="Amy">Amy</option>
+    <option value="Yi Mei">Yi Mei</option>
+    <option value="Pei Pei">Pei Pei</option>
+    <option value="Swee Peng">Swee Peng</option>
+</select>
