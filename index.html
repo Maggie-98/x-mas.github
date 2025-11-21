@@ -3,37 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>圣诞节礼物互换</title>
+    <title>圣诞节礼物互换 - X-mas Gift Exchange</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>圣诞节礼物互换 - X-mas Gift Exchange</h1>
+        <header>
+            <h1>🎄 圣诞节礼物互换 - X-mas Gift Exchange 🎁</h1>
+            <p class="description">一个简单的圣诞节礼物互换系统，支持中英文双语！</p>
+        </header>
 
         <div id="page1" class="page">
-            <h2>第一步：选择名字</h2>
-            <p>请选择一个名字（避免选择自己）</p>
+            <h2>第一步：选择名字 / Step 1: Choose a Name</h2>
+            <p>请选择一个名字（避免选择自己）。</p>
             <select id="nameSelection">
                 <option value="Maggie">Maggie</option>
                 <option value="Jane">Jane</option>
                 <option value="Yvonne">Yvonne</option>
             </select>
-            <button id="next1" onclick="nextPage(1)">下一步</button>
+            <button class="next-btn" id="next1" onclick="nextPage(1)">下一步 / Next</button>
         </div>
 
         <div id="page2" class="page">
-            <h2>第二步：抽选牌</h2>
-            <p>点击按钮进行抽选礼物</p>
-            <button id="drawButton" onclick="drawCard()">抽选</button>
+            <h2>第二步：抽选牌 / Step 2: Draw a Card</h2>
+            <p>点击下方按钮进行礼物抽选。</p>
+            <button class="draw-btn" id="drawButton" onclick="drawCard()">抽选 / Draw</button>
             <p id="drawResult"></p>
-            <button id="next2" onclick="nextPage(2)" style="display: none;">下一步</button>
+            <button class="next-btn" id="next2" onclick="nextPage(2)" style="display: none;">下一步 / Next</button>
         </div>
 
         <div id="page3" class="page">
-            <h2>第三步：总结</h2>
+            <h2>第三步：总结 / Step 3: Summary</h2>
             <p id="summary"></p>
             <p id="time"></p>
+            <p class="note">如果您重新进入链接，将直接跳转到此页面，无法重新抽选。</p>
         </div>
+        
+        <footer>
+            <p>&copy; 2025 圣诞节礼物互换 - X-mas Gift Exchange</p>
+        </footer>
     </div>
 
     <script src="script.js"></script>
