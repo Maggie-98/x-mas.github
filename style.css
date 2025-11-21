@@ -1,8 +1,8 @@
 /* 通用样式 */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f1f1f1;
-    color: #333;
+    background-color: red;
+    color: white;
     text-align: center;
     margin: 0;
     padding: 0;
@@ -13,9 +13,9 @@ body {
     max-width: 800px;
     margin: 30px auto;
     padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* 页面头部 */
@@ -25,13 +25,13 @@ header {
 
 header h1 {
     font-size: 2.5em;
-    color: #d32f2f;
+    color: #FFEB3B;
     margin-bottom: 10px;
 }
 
 .description {
     font-size: 1.2em;
-    color: #888;
+    color: #B0BEC5;
 }
 
 /* 页面内容 */
@@ -41,9 +41,10 @@ header h1 {
 
 .page p {
     font-size: 1.2em;
-    color: #555;
+    color: #FFFFFF;
 }
 
+/* 下拉框 */
 select {
     font-size: 1.1em;
     padding: 10px;
@@ -68,7 +69,6 @@ button:hover {
     background-color: #45a049;
 }
 
-/* 按钮大小 */
 .draw-btn {
     background-color: #FF5722;
 }
@@ -80,13 +80,19 @@ button:hover {
 /* 总结页面 */
 .note {
     font-size: 1em;
-    color: #888;
+    color: #B0BEC5;
     margin-top: 20px;
+}
+
+/* 雪花背景 */
+body {
+    background: url('https://www.transparenttextures.com/patterns/snow.png');
+    background-size: cover;
 }
 
 /* 页脚 */
 footer {
     margin-top: 40px;
     font-size: 0.9em;
-    color: #888;
+    color: #B0BEC5;
 }
