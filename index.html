@@ -43,53 +43,105 @@
             font-size: 14px;
             color: #fff;
         }
+        .card {
+            background-color: #fff;
+            color: black;
+            width: 200px;
+            height: 300px;
+            margin: 20px auto;
+            border: 2px solid #008CBA;
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            display: none;
+        }
+        #cardFlipped {
+            background-color: #ffcc00;
+            color: black;
+        }
     </style>
 </head>
 <body>
     <h1>🎄 圣诞节礼物互换 / X-Mas Gift Exchange 🎁</h1>
-    <p>请选选择你的名字 / Choose your name:</p>
-
-    <select id="nameSelection">
-        <option value="Yvonne">Yvonne</option>
-        <option value="Maggie">Maggie</option>
-        <option value="Jane">Jane</option>
-        <option value="Amy">Amy</option>
-        <option value="Yi Mei">Yi Mei</option>
-        <option value="Pei Pei">Pei Pei</option>
-        <option value="Swee Peng">Swee Peng</option>
-        <option value="Mei Yi">Mei Yi</option>
-    </select>
-
-    <br>
-
-    <button onclick="startExchange()">开始抽签 / Start Exchange</button>
-
-    <div id="result" style="display:none; margin-top: 20px;">
-        <p id="exchangeResult"></p>
+    
+    <!-- 第一步：选择名字 / Step 1: Choose a Name -->
+    <div id="page1" class="page">
+        <h2>第一步：选择名字 / Step 1: Choose a Name</h2>
+        <p>请选择一个名字（避免选择自己）/ Choose your name (don't choose yourself):</p>
+        <select id="nameSelection">
+            <option value="Yvonne">Yvonne</option>
+            <option value="Maggie">Maggie</option>
+            <option value="Jane">Jane</option>
+            <option value="Amy">Amy</option>
+            <option value="Yi Mei">Yi Mei</option>
+            <option value="Pei Pei">Pei Pei</option>
+            <option value="Swee Peng">Swee Peng</option>
+        </select>
+        <button id="nextBtn1" onclick="nextPage(1)">下一步 / Next</button>
     </div>
 
-    <p class="note">请确保选择一个有效的名字！</p>
-
-    <div class="footer">
-        <p>&copy; 2025 圣诞节礼物互换 - X-mas Gift Exchange</p>
+    <!-- 第二步：翻牌模式 / Step 2: Draw a Card -->
+    <div id="page2" class="page" style="display:none;">
+        <h2>第二步：翻牌模式 / Step 2: Draw a Card</h2>
+        <p>点击下面的卡片来抽选礼物对象！（只能翻一张）/ Click the card to draw a gift exchange (only one card can be flipped):</p>
+        <div class="card" id="card" onclick="flipCard()">
+            点击翻牌 / Click to Flip
+        </div>
+        <button id="nextBtn2" onclick="nextPage(2)" style="display:none;">下一步 / Next</button>
     </div>
+
+    <!-- 第三步：总结 / Step 3: Summary -->
+    <div id="page3" class="page" style="display:none;">
+        <h2>第三步：总结 / Step 3: Summary</h2>
+        <p id="summary"></p>
+        <p id="time"></p>
+        <p class="note">如果您重新进入链接，将直接跳转到此页面，无法重新抽选。/ If you reload, you will directly land on this page and cannot redraw.</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 圣诞节礼物互换 - X-Mas Gift Exchange</p>
+    </footer>
 
     <script>
-        function startExchange() {
-            const selectedName = document.getElementById('nameSelection').value;
-            const participants = ["Yvonne", "Maggie", "Jane", "Amy", "Yi Mei", "Pei Pei", "Swee Peng"];
-            
-            // Remove selected name from participants to avoid self-selection
-            const remainingNames = participants.filter(name => name !== selectedName);
+        // 全局变量
+        let selectedName = '';
+        let recipient = '';
+        const participants = ["Yvonne", "Maggie", "Jane", "Amy", "Yi Mei", "Pei Pei", "Swee Peng"];
+        let isCardFlipped = false;
 
-            // Randomly select a name from the remaining options
-            const randomIndex = Math.floor(Math.random() * remainingNames.length);
-            const giftRecipient = remainingNames[randomIndex];
-
-            // Display the result
-            document.getElementById('exchangeResult').innerText = `您将为 ${giftRecipient} 准备礼物！`;
-            document.getElementById('result').style.display = 'block';
+        // 第一步：点击下一步
+        function nextPage(step) {
+            if (step === 1) {
+                selectedName = document.getElementById("nameSelection").value;
+                // 禁止选择自己
+                if (!selectedName) {
+                    alert("请选择有效的名字！");
+                    return;
+                }
+                document.getElementById("page1").style.display = "none";
+                document.getElementById("page2").style.display = "block";
+            } else if (step === 2) {
+                // 随机选取一个交换对象（避免选择自己）
+                const remainingNames = participants.filter(name => name !== selectedName);
+                const randomIndex = Math.floor(Math.random() * remainingNames.length);
+                recipient = remainingNames[randomIndex];
+                document.getElementById("card").innerText = recipient;
+                document.getElementById("nextBtn2").style.display = "block";
+                document.getElementById("card").innerText = "您将为 " + recipient + " 准备礼物！";
+            }
         }
+
+        // 翻牌函数
+        function flipCard() {
+            if (!isCardFlipped) {
+                document.getElementById("card").style.display = "flex";
+                document.getElementById("card").id = "cardFlipped"; // 改变卡片显示
+                isCardFlipped = true;
+            }
+        }
+
     </script>
 </body>
 </html>
