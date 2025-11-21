@@ -34,4 +34,11 @@ function drawCard() {
     // 记录抽选时间
     const currentDate = new Date();
     const formattedDate = currentDate.toLocaleString();
-    document.getElementById('time').innerHTML = `抽选时间：${formattedDat
+    document.getElementById('time').innerHTML = `抽选时间：${formattedDate}`;
+
+    // 更新总结页
+    document.getElementById('summary').innerHTML = `${selectedName} -> ${drawnName} -> ${formattedDate}`;
+}
+
+// 页面加载时显示选择名字页面
+nextPage(1);
